@@ -8,7 +8,7 @@ use App\User;
 
 class OrderDetail extends Model
 {
-    protected $fillable = ['order_id', 'product_id', 'count', 'price']
+    protected $fillable = ['order_id', 'product_id', 'count', 'price'];
 
     public function orders () {
         return $this->belongTo(Order::class);

@@ -4,82 +4,48 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Route;
+use Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function signupPage () {
+        return view('user.signup');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function signup (Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique',
+            'password' => 'required|confirmed'
+        ]);
+
+        $data = $request->all(); // array
+        User::create($data);
+
+        return signin($request);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function signinPage() {
+        return view('user.signin');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
+    public function signin(Request $request) {
+        Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]);
+        return redirect()->route('user.profile');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
+    public function profile() {
+        return view('user.profile');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
+    public static function routes() {
+        return Route::name('user')->group((function() {
+            Route::get('/signup', 'UserController@signupPage')->name('.signupPage');
+            Route::post('/signup', 'UserController@signup')->name('.signup');
+            Route::get('/signin', 'UserController@signinPage')->name('.signinPage');
+            Route::post('/signin', 'UserController@signin')->name('.signin');
+            Route::get('/user/profile', 'UserController@profile')->name('.profile');
+        }));
     }
 }
