@@ -4,6 +4,15 @@
     <section>
         <div class="container">
             <div class="row">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+            <div class="row">
                 <div class="col-auto mx-auto" id="signin-form">
                     <div><h1 class="text-center">Sign In</h1></div>
                     <div>

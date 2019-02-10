@@ -16,23 +16,28 @@ class UserController extends Controller
     public function signup (Request $request) {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique',
+            'email' => 'required|unique:users',
             'password' => 'required|confirmed'
         ]);
 
         $data = $request->all(); // array
         User::create($data);
 
-        return signin($request);
-    }
+        // return Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]) ? redirect()->route('user.profile') : redirect()->back();
+        return redirect()->route('signin');
+    } 
 
     public function signinPage() {
         return view('user.signin');
     }
 
     public function signin(Request $request) {
-        Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]);
-        return redirect()->route('user.profile');
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        return (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')]) ) ?
+            redirect()->route('user.profile') : redirect()->back();
     }
 
     public function profile() {

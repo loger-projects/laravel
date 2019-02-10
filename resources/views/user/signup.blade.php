@@ -4,6 +4,15 @@
     <section>
         <div class="container">
             <div class="row">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+            <div class="row">
                 <div class="col-auto mx-auto" id="signup-form">
                     <div><h1 class="title text-center">Sign Up</h1></div>
                     <div>
@@ -11,11 +20,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
