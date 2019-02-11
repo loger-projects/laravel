@@ -19,7 +19,9 @@
                                     <span>{{ $product->price }}</span>
                                 </div>
                                 <div class="add-to-cart-button">
-                                    <button class="btn btn-secondary">Add To Cart</button>
+                                    <button class="btn btn-secondary">
+                                        <a href="{{ route('product.addToCart', ['id' => $product->id]) }}">Add To Cart</a>
+                                    </button>
                                 </div>
                                 <div class="view-cart">
                                     <a href="#">View Cart</a>

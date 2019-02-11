@@ -24,7 +24,7 @@
                     <h1 class="title text-center">Login</h1>
                 </div>
                 <div>
-                    <form action="{{ route('customAuth.login') }}" method="post">
+                    <form action="{{ route('user.login') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="email">Email:</label>

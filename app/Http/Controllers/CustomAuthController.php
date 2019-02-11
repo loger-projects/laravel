@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Validator;
 use Route;
 use Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 use App\User;
+use Illuminate\Http\Request;
 
 class CustomAuthController extends Controller
 {
