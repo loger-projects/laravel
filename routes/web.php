@@ -3,7 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomAuthController as CustomAuth;
 
-Route::get('/', 'ProductController@index');
+Route::get('/', 'ProductController@index')->name('myHome');
 
 Auth::routes();
 
