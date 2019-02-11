@@ -4,10 +4,15 @@ namespace App\Models;
 
 class Cart
 {
-    protected $items = null;
-    protected $totalQty;
-    protected $totalPrice;
+    public $items = null;
+    public $totalQty = 0;
+    public $totalPrice = 0;
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $oldCart
+     */
     public function __construct ($oldCart) 
     {
         if ($oldCart) {
@@ -17,21 +22,27 @@ class Cart
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $product
+     * @param [type] $id
+     * @return void
+     */
     public function add ($product, $id)
     {
-        $storedItem = ['qty' => 0, 'price' => $product->price];
+        $storedItem = ['qty' => 0, 'price' => $product->price, 'title' => $product->title];
         
         if ($this->items) {
             if (array_key_exists($id, $this->items)) {
                 $storedItem = $this->items[$id];
             }
-        
         }
-        $storedItem['qty']++; // nếu như trong giỏ hàng đã có item này. thì sẽ +1
-        $storedItem['price'] = $product->price*$storedItem['qty']; // nếu như đã có item. thì sẽ tính lại price
+        $storedItem['qty']++; 
+        $storedItem['price'] = $product->price*$storedItem['qty']; 
 
-        $this->items[$id] = $storedItem; // lưu lại item mới vs key = $id
-        $this->totalQty++; // tăng số lượng giỏ hàng lên 1
-        $this->totalPrice += $product->price; // tính lại tổng giá giỏ hàng
+        $this->items[$id] = $storedItem; 
+        $this->totalQty++;
+        $this->totalPrice += $product->price;
     }
 }

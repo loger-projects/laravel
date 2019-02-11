@@ -32,3 +32,12 @@
     font-size: 23px;
     padding: 20px 10px;
 }
+
+.header ul.nav li.nav-item a.nav-link div.total-count {
+    background-color: red;
+    border-radius: 50%;
+    font-size: 17px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    display: inline-block;
+}

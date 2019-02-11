@@ -58,47 +58,6 @@ class UserController extends Controller
         return view('user.profile');
     }
 
-    public function session ()
-    {
-        session(['key' => 'i\'ll want Someone just likes this', 'coldplay' => 'I\'m looking for somebody']);
-        session()->put('yourName', 'Kimi no nawa');
-        $not_exists = session('note_exists', 'it\'s where my demon hides ');
-        $get = Session::all();
-        $user = [
-            'no1' => 'image dragon',
-            'no2' => 'demon hides',
-            'no3' => 'dark in side'
-        ];
-        $symphony = [
-            'sy1' => 'No this is all for your',
-            'sy2' => 'nomate what we bearth',
-            'sy3' => 'this is where my demon hides'
-        ];
-        $sym2 = [
-            'sy1' => 'i can standing here my whole life',
-            'sy2' => 'say me can i',
-            'sy3' => 'could i keep running running running from my heart'
-        ];
-        session()->put('user', $user);
-        session()->push('user.no4', $symphony);
-        session()->push('user.no4', $sym2);
-        $value = session()->pull('key'); // cái này sẽ delete value của session('key); nhưng session('key') vẫn tồn tại
-        // return Session::all();
-        session()->flash('status', 'save me if everything okay');
-        return redirect()->route('user.nextSession');
-    }
-
-    public function nextSession (Request $request)
-    {
-        // session('status') is still alived
-        return redirect()->route('user.secondSession');
-    }
-    public function secondSession ()
-    {
-        // session('status') was destroyed
-        return session('status');
-    }
-
     public static function routes () 
     {
         Route::group([
@@ -117,9 +76,6 @@ class UserController extends Controller
         ], function () {
             Route::name('user')->group(function () {
                 Route::get('/user/profile', 'UserController@profile')->name('.profile');
-                Route::get('/user/session', 'UserController@session')->name('.session');
-                Route::get('/user/nextSession', 'UserController@nextSession')->name('.nextSession');
-                Route::get('/user/secondSession', 'UserController@secondSession')->name('.secondSession');
             });
         });
     }

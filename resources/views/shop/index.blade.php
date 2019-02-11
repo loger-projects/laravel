@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="add-to-cart-button">
                                     <button class="btn btn-secondary">
-                                        <a href="{{ route('product.addToCart', ['id' => $product->id]) }}">Add To Cart</a>
+                                        <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="text-white">Add To Cart</a>
                                     </button>
                                 </div>
                                 <div class="view-cart">
