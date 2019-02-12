@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
-                'title' => 'Asscessory',
+                'name' => 'Asscessory',
                 'description' => 'Qui porro blanditiis eligendi nulla laboriosam qui nam dolorum.',
                 'price' => 123,
                 'img' => '/img/item1.jpg',
@@ -22,7 +22,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
-                'title' => 'Americal Black Coffee',
+                'name' => 'Americal Black Coffee',
                 'description' => 'Quas nihil enim et voluptatem ad.',
                 'price' => 321,
                 'img' => '/img/item2.jpg',
@@ -30,7 +30,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
-                'title' => 'Coffee Colombua',
+                'name' => 'Coffee Colombua',
                 'description' => 'Voluptatem vel occaecati.',
                 'price' => 222,
                 'img' => '/img/item3.jpg',

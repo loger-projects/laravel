@@ -31,7 +31,7 @@ class Cart
      */
     public function add ($product, $id)
     {
-        $storedItem = ['qty' => 0, 'price' => $product->price, 'title' => $product->title];
+        $storedItem = ['qty' => 0, 'price' => $product->price, 'name' => $product->name, 'img' => $product->img];
         
         if ($this->items) {
             if (array_key_exists($id, $this->items)) {

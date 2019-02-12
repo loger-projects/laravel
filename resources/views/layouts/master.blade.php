@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/master.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
     @yield('css')

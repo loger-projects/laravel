@@ -40,11 +40,11 @@ class ProductController extends Controller
 
     public function cart() 
     {
-        if (Session::has('cart')) {
+        if (! Session::has('cart')) {
             return view('shop.cart', ['product' => null]);
         }
         $cart = Session::get('cart');
-        return view('shop.cart', ['products' => $cart->items, 'totalQty' => $cart->totalQty, 'totalPrice' => $cart->totalPrice]);
+        return view('shop.cart', ['products' => collect($cart->items), 'totalQty' => $cart->totalQty, 'totalPrice' => $cart->totalPrice]);
     }
 
     /**
@@ -56,6 +56,7 @@ class ProductController extends Controller
     {
         Route::name('product')->group(function() {
             Route::get('add-to-cart/{id}', 'ProductController@addToCart')->name('.addToCart');
+            Route::get('/cart', 'ProductController@cart')->name('.cart');
         });
     }
 }

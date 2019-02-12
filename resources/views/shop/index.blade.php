@@ -5,9 +5,9 @@
     </section>
     <section class="item-list">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($products as $product)
-                    <div class="col-10 col-md-5 col-lg-3"> <!-- md: 768 -->
+                    <div class="col-6 col-md-4 col-lg-3">
                         <div class="cart-item">
                             <div class="img-wrap">
                                 <img src="{{ $product->img }}" alt="item 1" style="width: 100%;">

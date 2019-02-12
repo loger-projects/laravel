@@ -59,6 +59,12 @@ class SessionController extends Controller
         return redirect()->route('home');
     }
 
+    public function destroyAll()
+    {
+        Session::flush();
+        return redirect()->route('home');
+    }
+
     /**
      * Undocumented function
      *
@@ -72,7 +78,8 @@ class SessionController extends Controller
             Route::name('session')->group(function() {
                 Route::get('/test', 'SessionController@test')->name('.test');
                 Route::get('/destroy/{key}', 'SessionController@destroy')->name('.destroy');
-                Route::get('/all', 'SessionController@all')->name('.all');
+                Route::get('/all', 'SessionController@all')->name('.get.all');
+                Route::get('/destroyAll', 'SessionController@destroyAll')->name('.destroy.all');
             });
         });
     }
