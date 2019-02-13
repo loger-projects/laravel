@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController as User;
+use App\Http\Controllers\ProductController as Product;
+use App\Http\Controllers\SessionController as Session;
+use App\Http\Controllers\CheckoutController as Checkout;
 
-Auth::routes();
+
 
 Route::get('/', 'ProductController@index')->name('home');
 
-UserController::routes();
-ProductController::routes();
-SessionController::routes();
+Auth::routes();
+User::routes();
+Product::routes();
+Session::routes();
+Checkout::routes();

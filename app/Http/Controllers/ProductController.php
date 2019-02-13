@@ -7,6 +7,7 @@ use Session;
 use Route;
 use App\Models\Product;
 use App\Models\Cart;
+use Stripe\Stripe;
 
 class ProductController extends Controller
 {
@@ -37,7 +38,12 @@ class ProductController extends Controller
         // return redirect()->route('myHome');
         return redirect()->route('home');
     }
-
+    
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function cart() 
     {
         if (! Session::has('cart')) {

@@ -38,17 +38,17 @@
         </div>
         <div class="col-6 proceed-checkout">
             <div class="totalPrice">${{ $totalPrice }}</div>
-            <div><a href="{{ route('home') }}" class="btn-brow-md" role="button">Proceed Checkout</a></div>
+            <div><a href="{{ route('checkout.index') }}" class="btn-brow-md" role="button">Proceed Checkout</a></div>
         </div>
     </div>
 </div>
 @else
 <div class="container">
-    <div class="row">
+    <div class="row cart-empty">
         <div class="col-12">
-            <p>Your cart is empty!</p>
+            <p>Your cart is currently empty!</p>
         </div>
-        <div>
+        <div class="col-12">
             <a href="{{ route('home') }}" class="btn-brow-md" role="button"><i class="fas fa-shopping-cart"></i>Continue Shoping</a>
         </div>
     </div>
@@ -59,16 +59,6 @@
 <style>
     div.cart-container {
         padding-top: 100px;
-    }
-    .btn-brow-md {
-        background-color: #c0aa83;
-        color: white;
-        font-size: 1.5rem;
-        padding: 10px 40 10px 55px;
-    }
-    .btn-brow-md:hover {
-        color: white;
-        text-decoration: none;
     }
     div.proceed-checkout {
         text-align: right;
@@ -102,5 +92,17 @@
     }
     table.cart-table tbody tr td div.price, table.cart-table tbody tr td div.total {
         color: #c0aa83;
+    }
+    div.cart-empty {
+        border-top: 3px solid #C0AA83;
+        margin-top: 100px;
+    }
+    div.cart-empty div:first-child {
+        padding: 20px 0px 50px 30px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    div.cart-empty div:last-child {
+        padding: 0;
     }
 </style>

@@ -41,3 +41,27 @@
     margin-right: 10px;
     display: inline-block;
 }
+
+/**
+ *
+ */
+.btn-brow-md {
+    background-color: #c0aa83;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 40 10px 55px;
+}
+.btn-brow-md:hover {
+    color: white;
+    text-decoration: none;
+}
+.btn-black-md {
+    background-color: #000;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 40 10px 30px;
+}
+.btn-black-md:hover {
+    color: white;
+    text-decoration: none;
+}
