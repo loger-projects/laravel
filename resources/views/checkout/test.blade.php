@@ -3,17 +3,19 @@
 @section('content')
     <div class="row">
         <div class="col-10 col-md-8 col-lg-6 mx-auto">
-            <form action="{{ route('checkout.destroy') }}" method="POST">
+            <form action="{{ route('checkout.destroy') }}" method="post" id="payment-form">
                 @csrf
-                <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_1NjfUjwr5dpRL1CXBQmQXozm"
-                    data-amount="999"
-                    data-name="Loger Nam"
-                    data-description="Example charge"
-                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                    data-locale="auto">
-                </script>
+                <div class="form-rows">
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element">
+                    <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                </div>
+                <button class="btn btn-brow-md">Submit Payment</button>
             </form>
         </div>
     </div>
@@ -24,5 +26,13 @@
 @endsection
 
 @section('js')
+    <script src="http://js.stripe.com/v3"></script>
     <script src="{{ asset('js/checkout_test.js') }}"></script>
 @endsection
+
+<style>
+    div.form-rows label{
+        font-weight: bold;
+        padding: 5px 10px;
+    }
+</style>

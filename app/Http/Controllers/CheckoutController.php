@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Stripe\Stripe;
+use Stripe\Charge;
 use Route;
 use Session;
 
@@ -38,10 +40,24 @@ class CheckoutController extends Controller
         return view('checkout.test', ['products' => collect($cart->items), 'totalQty' => $cart->totalQty, 'totalPrice' => $cart->totalPrice]);
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $cart = Session::get('cart');
+        Stripe::setApiKey("sk_test_BTqnguV7hFn35JsIKWHPcyA9");
+
+        // Token is created using Checkout or Elements!
+        // Get the payment token ID submitted by the form:
+        $token = $_POST['stripeToken'];
+
+        $charge = Charge::create([
+            'amount' => $cart->totalPrice*100,
+            'currency' => 'usd',
+            'description' => 'Example charge',
+            'source' => $token,
+        ]);
+
         // Session::forget('cart');
-        return view('checkout.destroy');
+        return $request->all();
     }
 
     /**
