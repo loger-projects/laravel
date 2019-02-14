@@ -64,11 +64,44 @@ form.addEventListener('submit', async (event) => {
   }
 });
 
-const newPro = new Promise((resolve, reject) => {
-  if (resolve) {
-    return 'arguments'
+const promiseToClean = new Promise((resolve, reject) => {
+  let isClean = true;
+  if (isClean) {
+    resolve('cleaned');
+  } else {
+    reject('not cleaned');
   }
-  if (reject) {
-    return 'arguments';
-  }
-});
+})
+
+promiseToClean.then((args) => {
+  console.log('the room is '+args)
+}).watch((args) => {
+  console.log('the room is '+args)
+})
+
+const cleanRoom = (isClean) => {
+  return new Promise((resolve, reject) => {
+    if (isClean) {
+      resolve('cleaned the Room')
+    } else {
+      reject('not clean');
+    }
+  })
+}
+
+const removeGarbage = (isRemove) => {
+  return new Promise((resolve, reject) => {
+    if (isRemove) {
+      resolve('removed the garbage')
+    } else {
+      reject('did not removed the garbage')
+    }
+  })
+}
+
+cleanRoom(true).then((args) => {
+  console.log(args);
+  return removeGarbage();
+}).then((args) => {
+  console.log(args)
+})
