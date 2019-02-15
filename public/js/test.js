@@ -1,7 +1,7 @@
 var stripe = Stripe('pk_test_1NjfUjwr5dpRL1CXBQmQXozm');
 var elements = stripe.elements();
 
-const data = {
+var card = elements.create('card', {
   iconStyle: 'solid',
   style: {
     base: {
@@ -9,66 +9,66 @@ const data = {
       color: 'white',
       lineHeight: '36px',
       fontWeight: 300,
-      fontFamily: '"Hellvetica Neue", Helvetica, sans-serif',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
       fontSize: '19px',
       '::placeholder': {
         color: '#8898AA',
-      }
+      },
     },
     invalid: {
       iconColor: '#e85746',
-      color: '#e85746'
+      color: '#e85746',
     }
   },
   classes: {
     focus: 'is-focused',
-    empty: 'is-empty'
-  }
-};
-
-var card = elements.create('card', data);
+    empty: 'is-empty',
+  },
+});
 card.mount('#card-element');
 
 var inputs = document.querySelectorAll('input.field');
-Array.prototype.forEach.call(inputs, input => {
-  input.addEventListener('focus', () => {
+Array.prototype.forEach.call(inputs, function(input) {
+  input.addEventListener('focus', function() {
     input.classList.add('is-focused');
   });
-  input.addEventListener('blur', () => {
+  input.addEventListener('blur', function() {
     input.classList.remove('is-focused');
   });
-  input.addEventListener('keyup', () => {
+  input.addEventListener('keyup', function() {
     if (input.value.length === 0) {
       input.classList.add('is-empty');
     } else {
       input.classList.remove('is-empty');
     }
-  })
+  });
 });
 
-const setOutcome = result => {
-  const successElement = document.querySelector('.success');
-  const errorElement = document.querySelector('.error');
+function setOutcome(result) {
+  var successElement = document.querySelector('.success');
+  var errorElement = document.querySelector('.error');
   successElement.classList.remove('visible');
   errorElement.classList.remove('visible');
+
   if (result.token) {
+    // Use the token to create a charge or a customer
+    // https://stripe.com/docs/charges
     successElement.querySelector('.token').textContent = result.token.id;
     successElement.classList.add('visible');
   } else if (result.error) {
     errorElement.textContent = result.error.message;
     errorElement.classList.add('visible');
   }
-};
+}
 
-card.on('change', (event) => {
+card.on('change', function(event) {
   setOutcome(event);
 });
 
-document.querySelector('form').addEventListener('submit', e => {
+document.querySelector('#payment-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const form = document.querySelector('form');
   const extraDetails = {
-    name: form.querySelector('input[name=cardholder-name]').value,
+    name: this.querySelector('input[name=cardholder-name]').value,
   };
   stripe.createToken(card, extraDetails).then(setOutcome);
 });

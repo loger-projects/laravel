@@ -8,8 +8,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/master.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/master.css') }}">
     @yield('css')
 </head>
 <body>
@@ -17,8 +17,6 @@
         @include('partials.header')
         @yield('content')
     </div>
-    <script src="{{ asset('/js/popper.min.js') }}"></script>
-    <script src="{{ asset('/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/master.js') }}"></script>
     @yield('js')
 </body>
