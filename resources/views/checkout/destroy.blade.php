@@ -7,6 +7,9 @@
             <div>
                 <button class="btn-brow-md" id="go-home-page-btn">Home Page</button>
             </div>
+            <div>
+                {{ var_dump($request) }}
+            </div>
         </div>
     </div>
 @endsection

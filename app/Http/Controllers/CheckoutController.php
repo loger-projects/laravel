@@ -47,7 +47,7 @@ class CheckoutController extends Controller
 
         // Token is created using Checkout or Elements!
         // Get the payment token ID submitted by the form:
-        $token = $_POST['stripeToken'];
+        $token = $request->stripeToken;
 
         $charge = Charge::create([
             'amount' => $cart->totalPrice*100,
@@ -57,7 +57,8 @@ class CheckoutController extends Controller
         ]);
 
         // Session::forget('cart');
-        return $request->all();
+        // return $request->all();
+        return view('checkout.destroy', ['request', $request]);
     }
 
     /**

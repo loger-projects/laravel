@@ -43,11 +43,11 @@
                         </label>
                     </div>
                     <div>
-                        <button type="submit">Pay $999</button>
+                        <button type="submit" class="btn-white-md">Pay $999</button>
                     </div>
-                    <div class="outcome">
-                        <div class="error" role="alert"></div>
-                        <div class="success">
+                    <div class="text-center d-none" id="errorWrap">
+                        <div class="text-danger" role="alert" id="errorMessage"></div>
+                        <div class="text-success">
                             Success! Your Stripe token is <span class="token"></span>
                         </div>
                     </div>

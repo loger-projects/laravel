@@ -1,0 +1,74 @@
+div.checkout-form-wrap {
+    font-size: 1.25rem;
+    background-color: #222329;
+    color: white;
+}
+form#payment-form div.form-row {
+    margin: 30px 0 20px 0;
+}
+form#payment-form label{
+    display: block;
+    width: 100%;
+    height: 35px;
+    position: relative;
+}
+form#payment-form label>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 32px;
+    font-weight: 300;
+    border-bottom: 1px solid #586A82;
+    transition: border-bottom-color 200ms ease-in-out;
+    cursor: text;
+    pointer-events: none;
+}
+
+form#payment-form label span span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0% 50%;
+    transition: transform 200ms ease-in-out;
+    cursor: text;
+}
+
+form#payment-form label .field.is-focused + span span,
+form#payment-form label .field:not(.is-empty) + span span {
+    transform: scale(0.68) translateY(-32px);
+    cursor: default;
+}
+
+.field {
+    background-color: transparent;
+    border: none;
+    display: block;
+    width: 100%;
+    font-size: 1.25rem;
+    line-height: 32px;
+    color: white;
+    outline: none;
+    cursor: text;
+    padding-bottom: 3px;
+    transition: opacity 200ms ease-in-out;
+}
+.field.is-empty:not(.is-focused) {
+    opacity: 0;
+}
+
+.btn-white-md {
+    background-color: #9DF2F2;
+    color: #263442;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border: none;
+}
+.btn-white-md:focus {
+    background-color: #1A1F24;
+    color: #BEC8D4;
+}

@@ -10,6 +10,7 @@
                 <li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
                 <li class="nav-item"><a href="/user/register" class="nav-link">Register</a></li>
             @endif
+            <li class="nav-item"><a href="{{ route('checkout.index') }}" class="nav-link">Checkout</a></li>
             <li class="nav-item ml-auto"><a href="{{ route('product.cart') }}" class="nav-link"><div class="total-count">{{ Session::has('cart') ? Session::get('cart')->totalQty : 0 }}</div>Cart</a></li>
         </ul>
     </div>
